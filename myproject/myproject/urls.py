@@ -14,9 +14,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth.views import logout
+from django.contrib.auth.views import login
 
 urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^logout', logout),
+    url(r'^login', login),
     url(r'^$', 'cms_users_put.views.barra'),
     url(r'^(.*)$', 'cms_users_put.views.otro'),
-    url(r'^admin/', include(admin.site.urls)),
 ]
